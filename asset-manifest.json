@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Textly-TextTool/static/css/main.abd64e84.css",
+    "main.js": "/Textly-TextTool/static/js/main.3d23d916.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Textly-TextTool/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/Textly-TextTool/index.html",
+    "main.abd64e84.css.map": "/Textly-TextTool/static/css/main.abd64e84.css.map",
+    "main.3d23d916.js.map": "/Textly-TextTool/static/js/main.3d23d916.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Textly-TextTool/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abd64e84.css",
+    "static/js/main.3d23d916.js"
+  ]
+}
