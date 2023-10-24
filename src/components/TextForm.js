@@ -2,33 +2,57 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const onClickUpBtn = () => {
-    let newText = text.toUpperCase();
-    setText(newText);
-    props.showAlert("Converted to Uppercase", "success");
+    if (text === "" || text === " ") {
+      props.showAlert("Write Some Text in Box", "warning");
+    } else {
+      let newText = text.toUpperCase();
+      setText(newText);
+      props.showAlert("Converted to Uppercase", "success");
+    }
   };
   const onClickLoBtn = () => {
-    let newText = text.toLowerCase();
-    setText(newText);
-    props.showAlert("Converted to Lowercase", "success");
+    if (text === "" || text === " ") {
+      props.showAlert("Write Some Text in Box", "warning");
+    } else {
+      let newText = text.toLowerCase();
+      setText(newText);
+      props.showAlert("Converted to Lowercase", "success");
+    }
   };
   const ClearButton = () => {
+    if (text===("") || text===(" ")){
+
+      props.showAlert("Write Some Text in Box", "warning");
+    }
+    else{
     let newText = "";
     setText(newText);
     props.showAlert("Text Cleared", "success");
+    }
   };
   const ONChange = (event) => {
     setText(event.target.value);
   };
   const CopyButton = () => {
-    let text = document.getElementById("text");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    if (text===("") || text===(" ")){
+
+      props.showAlert("Write Some Text in Box", "warning");
+    }
+    else{
+    navigator.clipboard.writeText(text);
     props.showAlert("Text Copied", "success");
+    }
   };
   const removeSpace = () => {
+    if (text===("") || text===(" ")){
+
+      props.showAlert("Write Some Text in Box", "warning");
+    }
+    else{
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
     props.showAlert("Extra Spaces Removed", "success");
+    }
   };
   const [text, setText] = useState("");
 
@@ -52,19 +76,19 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={onClickUpBtn}>
+        <button className="btn btn-primary mx-1 my-1" onClick={onClickUpBtn}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={onClickLoBtn}>
+        <button className="btn btn-primary mx-1 my-1" onClick={onClickLoBtn}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={ClearButton}>
+        <button className="btn btn-primary mx-1 my-1" onClick={ClearButton}>
           Clear Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={CopyButton}>
+        <button className="btn btn-primary mx-1 my-1" onClick={CopyButton}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={removeSpace}>
+        <button className="btn btn-primary mx-1 my-1" onClick={removeSpace}>
           Remove Extra Spaces
         </button>
       </div>
@@ -74,12 +98,12 @@ export default function TextForm(props) {
       >
         <h1>Your text Summary</h1>
         <p>
-          {text.length - text.replaceAll(" ", "").length} words and {text.length} characters
+          {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters
           {/* {text.split(" ").length} words and {text.length} characters */}
         </p>
         <h2>Preview</h2>
         <p>{text.length > 0 ? text : "Enter Text Above In Box to Preview"}</p>
       </div>
-    </>
+    </> 
   );
 }
